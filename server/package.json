@@ -1,0 +1,19 @@
+{
+  "name": "whiteboard",
+  "version": "1.0.0",
+  "description": "A collaborative whiteboard",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "latest",
+    "uuid": "^7.0.2"
+  },
+  "scripts": {
+    "start": "node index"
+  },
+  "author": "Matt Wilson",
+  "license": "MIT",
+  "devDependencies": {
+    "cors": "^2.8.5"
+  }
+}

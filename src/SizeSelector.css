@@ -1,0 +1,40 @@
+.sizes {
+    width:120px;
+    margin-left:15px;
+    margin-top:10px;
+}
+
+.size {
+    display: inline-block;
+    height: 36px;
+    width: 36px;
+    font-size: 0px;
+    line-height: 36px;
+    text-align: center;
+    vertical-align: middle;
+    border:4px solid white;
+}
+
+.sizeSelected {
+    border:4px dashed #c0c0c0 !important;
+}
+
+.lineSmall {
+    background-image: url("images/circle-5.png");
+    background-repeat: no-repeat;
+    background-color: #f5f5f5;
+    background-position: center;
+}
+.lineMedium {
+    background-image: url("images/circle-9.png");
+    background-repeat: no-repeat;
+    background-color: #f5f5f5;
+    background-position: center;
+}
+.lineLarge {
+    background-image: url("images/circle-16.png");
+    background-repeat: no-repeat;
+    background-color: #f5f5f5;
+    background-position: center;
+}
+

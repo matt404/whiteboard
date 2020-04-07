@@ -1,0 +1,20 @@
+.tools {
+    width:120px;
+    margin-left:15px;
+    margin-top:10px;
+}
+
+.tool {
+    display: inline-block;
+    height: 36px;
+    width: 36px;
+    font-size: 0px;
+    line-height: 56px;
+    border:4px solid white;
+}
+
+.toolSelected {
+    border:4px dashed #c0c0c0 !important;
+}
+
+.pen { background-color: #c0c0c0; }

@@ -1,0 +1,25 @@
+.colors {
+    width:180px;
+    margin-left:15px;
+    margin-top:10px;
+}
+
+.color {
+    display: inline-block;
+    height: 56px;
+    width: 56px;
+    font-size: 0px;
+    line-height: 56px;
+    border:4px solid white;
+}
+
+.colorSelected {
+    border:4px dashed #c0c0c0 !important;
+}
+
+.black { background-color: black; }
+.red { background-color: red; }
+.green { background-color: green; }
+.blue { background-color: blue; }
+.yellow { background-color: yellow; }
+.purple { background-color: purple; }
