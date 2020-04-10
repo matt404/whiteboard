@@ -48,7 +48,7 @@ class App extends React.Component {
         return (
             <React.Fragment>
                 <nav className="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-                    <a className="navbar-brand col-sm-3 col-md-2 mr-0" href="javascript:void(0);"><img src="./../logo26.png" /> Whiteboard</a>
+                    <a className="navbar-brand col-sm-3 col-md-2 mr-0" href="javascript:void(0);"><img src="./../logo26.png" /> Whiteboards.live</a>
                     <ul className="navbar-nav px-3">
                         <li className="nav-item text-nowrap">
                             <a id="aExport" className="nav-link" href="javascript:void(0);">Export</a>

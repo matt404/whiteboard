@@ -56,7 +56,7 @@ class Whiteboard  extends React.Component {
     }
 
     fetchWhiteboardState(){
-        fetch(process.env.REACT_APP_API_BASE_URI+"/whiteboard/"+this.state.key+"/cache")
+        fetch(process.env.REACT_APP_API_BASE_URI+"/api/whiteboard/"+this.state.key+"/cache")
             .then(res => res.json())
             .then(
                 (result) => {

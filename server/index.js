@@ -13,8 +13,9 @@ let globalCache = {};
 
 app.use(APP_ROOT_PATH);
 
-app.get('/whiteboard/create', onCreateWhiteboard);
-app.get('/whiteboard/:key/cache', cors(), getWhiteboardCache);
+app.get('/whiteboard/:key', getWhiteboardApp);
+app.get('/api/whiteboard/:key/cache', cors(), getWhiteboardCache);
+app.get('*', onCreateWhiteboard);
 
 function onConnection(socket){
 
@@ -25,6 +26,18 @@ function onConnection(socket){
 
     recordDrawingEvent(socket.nsp.name, data);
   });
+}
+
+function getWhiteboardApp(req,res){
+  /*confirm that the key is a guid, else create a new key*/
+  if(uuidRegExp.test(req.params.key)){
+    let nsp = '/' + req.params.key;
+    console.log("getWhiteboardApp", nsp);
+
+    res.sendFile(__dirname+'/public/index.html');
+  }else{
+    onCreateWhiteboard(req, res);
+  }
 }
 
 function getWhiteboardCache(req,res){
@@ -53,9 +66,10 @@ function onCreateWhiteboard(req, res){
   const whiteboardUUID = uuid.v4();
   const redirectURL = WHITEBOARD_REDIRECT_URL + whiteboardUUID;
 
-  console.log(whiteboardUUID,redirectURL);
+  console.log("onCreateWhiteboard",whiteboardUUID,redirectURL);
 
-  res.redirect(301, redirectURL);
+  //Temporary Redirect - so that the result won't be cached
+  res.redirect(307, redirectURL);
 }
 
 io.of(uuidRegExp).on('connection', onConnection);
