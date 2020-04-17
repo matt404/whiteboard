@@ -1,5 +1,13 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Developer Setup
+
+First, you will need to setup a symlink to map the './public' directory to './server/public'
+
+```shell script
+ln -s ./public ./server/public
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -71,51 +79,36 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 To build the docker container:
 
-```dockerfile
-docker build -t matt404/whiteboard .
+```shell script
+docker build -t [your dockerhub alias here]/whiteboard .
 ```
 
 To run the application in a local docker container:
 
-```dockerfile
-docker run -d -p 3000:3000 matt404/whiteboard
+```shell script
+docker run -d --name whiteboard -p 3000:3000 [your dockerhub alias here]/whiteboard
 ```
-
 
 Check the container status
 
-```dockerfile
+```shell script
 docker ps
 ```
 
 To stop the container: (use the command above to get the container id)
 
-```dockerfile
-docker stop <container id>
+```shell script
+docker stop whiteboard
 ```
 
 Attach to a container with new terminal session:
 
-```dockerfile
-docker exec -i -t <container id> /bin/bash
+```shell script
+docker exec -i -t whiteboard /bin/bash
 ```
 
 You can remove dangling Docker images by running:
 
-```dockerfile
+```shell script
 docker rmi -f $(docker images -qf dangling=true)
-```
-
-To download and start the application from a fresh Docker host:
-
-```dockerfile
-docker pull pull matt404/whiteboard
-
-docker run -d --name whiteboard -p 3000:3000 matt404/whiteboard
-```
-
-To publish the docker image to docker hub:
-
-```dockerfile
-docker push matt404/whiteboard
 ```
