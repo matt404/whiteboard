@@ -18,7 +18,8 @@ class Whiteboard  extends React.Component {
         this.onMouseDown = this.onMouseDown.bind(this);
         this.onMouseUp = this.onMouseUp.bind(this);
         this.onMouseMove = this.onMouseMove.bind(this);
-        this.throttle = this.throttle.bind(this);
+        this.throttleMoveEvent = this.throttleMoveEvent.bind(this);
+        this.throttleResizeEvent = this.throttleResizeEvent.bind(this);
         this.onDrawingEvent = this.onDrawingEvent.bind(this);
         this.onResize = this.onResize.bind(this);
         this.onClickExport = this.onClickExport.bind(this);
@@ -26,6 +27,8 @@ class Whiteboard  extends React.Component {
     }
 
     componentDidMount() {
+        const DRAW_EVENT_THROTTLE_MS = 10;
+        const RESIZE_EVENT_THROTTLE_MS = 500;
 
         let canvas = document.getElementById('whiteboard');
         let socket = socketIOClient(process.env.REACT_APP_SOCKET_BASE_URI+"/"+this.state.key);
@@ -42,16 +45,16 @@ class Whiteboard  extends React.Component {
         canvas.addEventListener('mousedown', this.onMouseDown, false);
         canvas.addEventListener('mouseup', this.onMouseUp, false);
         canvas.addEventListener('mouseout', this.onMouseUp, false);
-        canvas.addEventListener('mousemove', this.throttle(this.onMouseMove, 10), false);
+        canvas.addEventListener('mousemove', this.throttleMoveEvent(this.onMouseMove, DRAW_EVENT_THROTTLE_MS), false);
 
         canvas.addEventListener('touchstart', this.onMouseDown, false);
         canvas.addEventListener('touchend', this.onMouseUp, false);
         canvas.addEventListener('touchcancel', this.onMouseUp, false);
-        canvas.addEventListener('touchmove', this.throttle(this.onMouseMove, 10), false);
+        canvas.addEventListener('touchmove', this.throttleMoveEvent(this.onMouseMove, DRAW_EVENT_THROTTLE_MS), false);
 
         socket.on('drawing', this.onDrawingEvent);
 
-        window.addEventListener('resize', this.onResize, false);
+        window.addEventListener('resize', this.throttleResizeEvent(this.onResize, RESIZE_EVENT_THROTTLE_MS), false);
         this.onResize();
     }
 
@@ -160,7 +163,7 @@ class Whiteboard  extends React.Component {
     }
 
     // limit the number of events per second
-    throttle(callback, delay) {
+    throttleMoveEvent(callback, delay) {
         let previousCall = new Date().getTime();
         return function() {
             let time = new Date().getTime();
@@ -169,6 +172,20 @@ class Whiteboard  extends React.Component {
                 previousCall = time;
                 callback.apply(null, arguments);
             }
+        };
+    }
+
+    // limit the number of events per second
+    throttleResizeEvent(callback, delay) {
+        let timeoutHandle = false;
+        return function() {
+            if(timeoutHandle) {
+                clearTimeout(timeoutHandle);
+            }
+            timeoutHandle = setTimeout(() => {
+                callback();
+                timeoutHandle = false;
+            },delay);
         };
     }
 
