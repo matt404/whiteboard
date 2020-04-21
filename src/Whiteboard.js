@@ -109,7 +109,7 @@ class Whiteboard  extends React.Component {
 
     getSessionKey(){
         const currentUrl = window.location.pathname;
-        let uuidRegEx = new RegExp(/\/whiteboard\/([0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12})/);
+        let uuidRegEx = new RegExp(/\/whiteboard\/([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})/);
         let matchArray = currentUrl.match(uuidRegEx);
         if(matchArray !== null && matchArray.length === 2){
             return matchArray[1];

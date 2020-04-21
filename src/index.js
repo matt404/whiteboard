@@ -10,7 +10,7 @@ if(!haveSessionKey()){
 
 function haveSessionKey(){
     let currentUrl = window.location.pathname;
-    let uuidRegEx = new RegExp(/\/whiteboard\/[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}/);
+    let uuidRegEx = new RegExp(/\/whiteboard\/[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}/);
     return uuidRegEx.test(currentUrl);
 }
 
