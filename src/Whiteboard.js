@@ -15,14 +15,15 @@ class Whiteboard  extends React.Component {
         this.drawLine = this.drawLine.bind(this);
         this.fetchWhiteboardState = this.fetchWhiteboardState.bind(this);
         this.getSessionKey = this.getSessionKey.bind(this);
+        this.onClickExport = this.onClickExport.bind(this);
+        this.onDrawingEvent = this.onDrawingEvent.bind(this);
         this.onMouseDown = this.onMouseDown.bind(this);
-        this.onMouseUp = this.onMouseUp.bind(this);
         this.onMouseMove = this.onMouseMove.bind(this);
+        this.onMouseUp = this.onMouseUp.bind(this);
+        this.onParticipantUpdate = this.onParticipantUpdate.bind(this);
+        this.onResize = this.onResize.bind(this);
         this.throttleMoveEvent = this.throttleMoveEvent.bind(this);
         this.throttleResizeEvent = this.throttleResizeEvent.bind(this);
-        this.onDrawingEvent = this.onDrawingEvent.bind(this);
-        this.onResize = this.onResize.bind(this);
-        this.onClickExport = this.onClickExport.bind(this);
 
     }
 
@@ -53,6 +54,7 @@ class Whiteboard  extends React.Component {
         canvas.addEventListener('touchmove', this.throttleMoveEvent(this.onMouseMove, DRAW_EVENT_THROTTLE_MS), false);
 
         socket.on('drawing', this.onDrawingEvent);
+        socket.on('participantUpdate', this.onParticipantUpdate);
 
         window.addEventListener('resize', this.throttleResizeEvent(this.onResize, RESIZE_EVENT_THROTTLE_MS), false);
         this.onResize();
@@ -160,6 +162,10 @@ class Whiteboard  extends React.Component {
 
             this.drawLine(x0, y0, x1, y1, color, size, emit, author);
         });
+    }
+
+    onParticipantUpdate(data){
+        document.getElementById("participantCount").innerText = data.count;
     }
 
     // limit the number of events per second

@@ -4,9 +4,9 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-if(!haveSessionKey()){
-    createSession();
-}
+// if(!haveSessionKey()){
+//     createSession();
+// }
 
 function haveSessionKey(){
     let currentUrl = window.location.pathname;

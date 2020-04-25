@@ -14,6 +14,7 @@ let globalCache = {};
 app.use(APP_ROOT_PATH);
 
 app.get('/whiteboard/:key', getWhiteboardApp);
+app.get('/whiteboard/create', onCreateWhiteboard);
 app.get('/api/whiteboard/:key/cache', cors(), getWhiteboardCache);
 app.get('*', onCreateWhiteboard);
 
@@ -26,6 +27,12 @@ function onConnection(socket){
 
     recordDrawingEvent(socket.nsp.name, data);
   });
+
+  socket.on('disconnect', (reason) => {
+    socket.broadcast.emit('participantUpdate', {count:Object.keys(socket.nsp.connected).length});
+  });
+
+  socket.nsp.emit('participantUpdate', {count:Object.keys(socket.nsp.connected).length});
 }
 
 function getWhiteboardApp(req,res){
