@@ -16,7 +16,7 @@ app.use(APP_ROOT_PATH);
 app.get('/whiteboard/:key', getWhiteboardApp);
 app.get('/whiteboard/create', onCreateWhiteboard);
 app.get('/api/whiteboard/:key/cache', cors(), getWhiteboardCache);
-app.get('*', onCreateWhiteboard);
+app.get('/', onCreateWhiteboard);
 
 function onConnection(socket){
 
