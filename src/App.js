@@ -2,11 +2,13 @@ import React from 'react';
 import Whiteboard from './Whiteboard';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
-import nav from 'react-bootstrap/Nav';
+import Nav from 'react-bootstrap/Nav';
 import button from 'react-bootstrap/Button';
 import ColorSelector from "./ColorSelector";
 import SizeSelector from "./SizeSelector";
 import ToolSelector from "./ToolSelector";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
 
 class App extends React.Component {
     constructor(props) {
@@ -50,38 +52,6 @@ class App extends React.Component {
         return (
             <React.Fragment>
 
-                <nav className="navbar navbar-expand-sm navbar-dark bg-dark fixed-top shadow">
-                    <a className="navbar-brand" href="#"><img src="./../logo26.png" /> Whiteboards.live</a>
-                    <button className="navbar-toggler" type="button" data-toggle="collapse"
-                            data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false"
-                            aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-
-                    <div className="collapse navbar-collapse" id="navbarsExample04">
-                        <ul className="navbar-nav mr-auto">
-                            <li className="nav-item">
-                                <a id="aActive" className="nav-link" href="javascript:void(0);"><svg
-                                    className="bi bi-people-fill" width="22" height="22" viewBox="0 0 16 16"
-                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                          d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 100-6 3 3 0 000 6zm-5.784 6A2.238 2.238 0 015 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 005 9c-4 0-5 3-5 4s1 1 1 1h4.216zM4.5 8a2.5 2.5 0 100-5 2.5 2.5 0 000 5z"
-                                          clip-rule="evenodd"/>
-                                </svg> (<span id="participantCount">0</span>)</a>
-                            </li>
-                        </ul>
-                        <ul className="navbar-nav my-2 my-md-0">
-                            <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
-                                   aria-haspopup="true" aria-expanded="false">Options</a>
-                                <div className="dropdown-menu" aria-labelledby="dropdown04">
-                                    <a id="aExport" className="nav-link" href="javascript:void(0);">Export</a>
-                                    <a id="aImport" className="nav-link" href="javascript:void(0);">Import</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
 
                 <nav className="col-md-2 d-none d-md-block bg-light sidebar">
                     <div className="sidebar-sticky">
@@ -108,6 +78,65 @@ class App extends React.Component {
                             onChangeTool={this.onChangeTool}/>
                     </div>
                 </nav>
+                <Navbar bg="dark" variant="dark" expand="sm">
+                    <Navbar.Brand href="javascript:void(0);"><img src="./../logo26.png" /> Whiteboards.live</Navbar.Brand>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="mr-auto">
+                            <Nav.Link href="#home">
+                                <svg
+                                    className="bi bi-people-fill" width="22" height="22" viewBox="0 0 16 16"
+                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                          d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 100-6 3 3 0 000 6zm-5.784 6A2.238 2.238 0 015 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 005 9c-4 0-5 3-5 4s1 1 1 1h4.216zM4.5 8a2.5 2.5 0 100-5 2.5 2.5 0 000 5z"
+                                          clip-rule="evenodd"/>
+                                </svg> (<span id="participantCount">0</span>)
+                            </Nav.Link>
+                        </Nav>
+                        <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+                            <NavDropdown.Item id="aImport" href="javascript:void(0);">Import</NavDropdown.Item>
+                            <NavDropdown.Item id="aExport" href="javascript:void(0);">Export</NavDropdown.Item>
+                            <NavDropdown.Divider />
+                            <NavDropdown.Item href="#">Help</NavDropdown.Item>
+                        </NavDropdown>
+                    </Navbar.Collapse>
+                </Navbar>
+{/*
+
+                <Navbar className="navbar navbar-expand-sm navbar-dark bg-dark fixed-top shadow">
+                    <a className="navbar-brand" href="#"><img src="./../logo26.png" /> Whiteboards.live</a>
+                    <button className="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div className="collapse navbar-collapse" id="navbarsExample04">
+                        <ul className="navbar-nav mr-auto">
+                            <li className="nav-item">
+                                <a id="aActive" className="nav-link" href="javascript:void(0);"><svg
+                                    className="bi bi-people-fill" width="22" height="22" viewBox="0 0 16 16"
+                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                          d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 100-6 3 3 0 000 6zm-5.784 6A2.238 2.238 0 015 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 005 9c-4 0-5 3-5 4s1 1 1 1h4.216zM4.5 8a2.5 2.5 0 100-5 2.5 2.5 0 000 5z"
+                                          clip-rule="evenodd"/>
+                                </svg> (<span id="participantCount">0</span>)</a>
+                            </li>                            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+
+                        </ul>
+                        <ul className="navbar-nav my-2 my-md-0">
+                            <li className="nav-item dropdown">
+                                <a className="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
+                                   aria-haspopup="true" aria-expanded="false">Options</a>
+                                <div className="dropdown-menu" aria-labelledby="dropdown04">
+                                    <a id="aExport" className="nav-link" href="javascript:void(0);">Export</a>
+                                    <a id="aImport" className="nav-link" href="javascript:void(0);">Import</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </Navbar>
+*/}
 
                 <Whiteboard
                     getColor={this.getColor}

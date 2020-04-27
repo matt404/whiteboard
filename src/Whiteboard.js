@@ -41,7 +41,7 @@ class Whiteboard  extends React.Component {
             context: context
         }, ()=>{});
 
-        document.getElementById("aExport").addEventListener('click', this.onClickExport, false);
+        //document.getElementById("aExport").addEventListener('click', this.onClickExport, false);
 
         canvas.addEventListener('mousedown', this.onMouseDown, false);
         canvas.addEventListener('mouseup', this.onMouseUp, false);
