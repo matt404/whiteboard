@@ -93,12 +93,14 @@ class App extends React.Component {
                                 </svg> (<span id="participantCount">0</span>)
                             </Nav.Link>
                         </Nav>
-                        <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                            <NavDropdown.Item id="aImport" href="javascript:void(0);">Import</NavDropdown.Item>
-                            <NavDropdown.Item id="aExport" href="javascript:void(0);">Export</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#">Help</NavDropdown.Item>
-                        </NavDropdown>
+                        <Nav>
+                            <NavDropdown title="Options" id="basic-nav-dropdown" renderMenuOnMount={true}>
+                                <NavDropdown.Item id="aImport" href="javascript:void(0);">Import</NavDropdown.Item>
+                                <NavDropdown.Item id="aExport" href="javascript:void(0);">Export</NavDropdown.Item>
+                                <NavDropdown.Divider />
+                                <NavDropdown.Item id="aHelp" href="javascript:void(0);">Help</NavDropdown.Item>
+                            </NavDropdown>
+                        </Nav>
                     </Navbar.Collapse>
                 </Navbar>
 {/*
