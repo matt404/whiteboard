@@ -79,7 +79,7 @@ class App extends React.Component {
                     </div>
                 </nav>
                 <Navbar bg="dark" variant="dark" expand="sm">
-                    <Navbar.Brand href="javascript:void(0);"><img src="./../logo26.png" /> Whiteboards.live</Navbar.Brand>
+                    <Navbar.Brand href="javascript:void(0);"><img src="./../static/logo26.png" /> Whiteboards.live</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">
