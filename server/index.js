@@ -11,12 +11,12 @@ const uuidRegExp = /[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{
 
 let globalCache = {};
 
-app.use(APP_ROOT_PATH);
+app.use('/static/', APP_ROOT_PATH);
 
 app.get('/whiteboard/:key', getWhiteboardApp);
 app.get('/whiteboard/create', onCreateWhiteboard);
 app.get('/api/whiteboard/:key/cache', cors(), getWhiteboardCache);
-app.get('/', onCreateWhiteboard);
+app.get('*', onCreateWhiteboard);
 
 function onConnection(socket){
 
