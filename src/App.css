@@ -20,6 +20,10 @@ canvas.whiteboard {
   vertical-align: text-bottom;
 }
 
+.NavItemText{
+  color:#c0c0c0;
+}
+
 /*
  * Sidebar
  */
