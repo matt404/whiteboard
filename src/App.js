@@ -50,7 +50,7 @@ class App extends React.Component {
 
         return (
             <React.Fragment>
-                <nav className="col-md-2 d-none d-md-block bg-light sidebar">
+                <nav className="col-sm-2 bg-light sidebar">
                     <div className="sidebar-sticky">
                         <ColorSelector
                             getColor={this.getColor}

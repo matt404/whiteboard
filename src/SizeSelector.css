@@ -20,6 +20,10 @@
     border:4px dashed #c0c0c0 !important;
 }
 
+.sizeSelectorButton{
+    display: none;
+}
+
 .lineSmall {
     background-image: url("images/circle-5.png");
     background-repeat: no-repeat;
@@ -39,3 +43,25 @@
     background-position: center;
 }
 
+@media screen and (max-width: 576px) {
+    .sizes{
+        border:1px solid #a0a0a0;
+        margin-left:8px;
+        width:44px;
+    }
+    .size {
+        display: none;
+    }
+    .sizeSelected {
+        display: inline-block;
+    }
+    .sizeSelectorButton {
+        display: inline-block;
+        height: 36px;
+        width: 6px;
+    }
+    svg#sizeSelectorButton{
+        height: 36px;
+        width: 6px;
+    }
+}

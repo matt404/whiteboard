@@ -18,9 +18,36 @@
     border:4px dashed #c0c0c0 !important;
 }
 
+.colorSelectorButton{
+    display: none;
+}
+
 .black { background-color: black; }
 .red { background-color: red; }
 .green { background-color: green; }
 .blue { background-color: blue; }
 .yellow { background-color: yellow; }
 .purple { background-color: purple; }
+
+@media screen and (max-width: 576px) {
+    .colors{
+        border:1px solid #c0c0c0;
+        margin-left:8px;
+        width:64px;
+    }
+    .color {
+        display: none;
+    }
+    .colorSelected {
+        display: inline-block;
+    }
+    .colorSelectorButton {
+        display: inline-block;
+        height: 56px;
+        width: 6px;
+    }
+    svg#colorSelectorButton{
+        height: 56px;
+        width: 6px;
+    }
+}

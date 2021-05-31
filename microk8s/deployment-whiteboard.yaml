@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: whiteboard-deployment
+  labels:
+    app: whiteboard
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: whiteboard
+  template:
+    metadata:
+      labels:
+        app: whiteboard
+    spec:
+      containers:
+        - name: whiteboard
+          image: matt404/whiteboard:latest
+          env:
+            - name: REDIS_ADDR
+              value: "redis"
+            - name: REDIS_PORT
+              value: "6379"
+          ports:
+            - containerPort: 3000

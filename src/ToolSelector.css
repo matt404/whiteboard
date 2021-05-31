@@ -17,4 +17,31 @@
     border:4px dashed #c0c0c0 !important;
 }
 
+.toolSelectorButton{
+    display: none;
+}
+
 .pen { background-color: #f5f5f5; }
+
+@media screen and (max-width: 576px) {
+    .tools{
+        border:1px solid #a0a0a0;
+        margin-left:8px;
+        width:40px;
+    }
+    .tool {
+        display: none;
+    }
+    .toolSelected {
+        display: inline-block;
+    }
+    .toolSelectorButton {
+        display: inline-block;
+        height: 40px;
+        width: 6px;
+    }
+    svg#toolSelectorButton{
+        height: 40px;
+        width: 6px;
+    }
+}
